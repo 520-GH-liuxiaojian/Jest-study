@@ -1,0 +1,8 @@
+{
+  "name": "Jest-study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:520-GH-liuxiaojian/Jest-study.git",
+  "author": "xiaojian <oppor11520@gmail.com>",
+  "license": "MIT"
+}

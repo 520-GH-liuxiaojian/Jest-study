@@ -243,3 +243,45 @@ coverageDirectory: "coverage",
 
 当运行 jest 的时候 -> jest(babel-jest) 插件就会查找系统中 babel 信息 -> babel-core -> 在运行之前结合 babel 将 esmodule 代码进行转换成为 commonJs 代码 -> 运行转化过后的代码
 
+
+
+## 005 js 中的匹配器 matchers
+
+期待一个值等于一个指定的值 一个指定的值就是的 matchers 【匹配起】
+
++ > **toBe** 就是一个匹配器 相当于 === 不能比较对象 对象内存地址不一样
+
++ > **toEqual** 匹配内容相等 对象的值相同 引用地址可以不同
+
++ > **toBeNull** 匹配一个值是不是 null  注意这里的值不可以为 undefined
+
++ > **toBeUndefined** 匹配一个值是不是 undefined  注意这里的值不可以为 null
+
++ > **toBeDefined** 匹配一个值是否被定义过
+
++ > **toBeTruthy** 匹配一个值是否为真
+
++ > **toBeFalsy** 匹配一个值是否为假
+
++ > **not** 取反匹配起
+
++ > **toBeGreaterThan** 大于指定数子
+
++ > **toBeLessThan** 小于指定数子
+
++ > **toBeGreaterThanOrEqual**  大于等于指定数子
+
++ > **toBeLessThanOrEqual** 小于等于指定的数字
+
++ > **toBeCloseTo** 测试小数
+
++ > **toMatch** 是否包含某个具体字符
+
++ > **toContain** 是否包含某个具体片段
+
++ > **toThrow** 是否抛出异常
+
+
+
+
+

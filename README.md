@@ -136,4 +136,48 @@ test('测试 minus 减法方法', () => {
 ## 003 Jest 安装
 
 + 安装 node 和 npm 
++ 初始化 node 管理项目目录
++ 将方法进行整体导出
+
+```javascript
+function add(first, second) {
+    return first + second
+}
+
+function minus(first, second) {
+    return first - second
+}
+
+module.exports = { add, minus }
+```
+
++ 编写 以 test.js 文件结尾的文件
+
+```javascript
+const { add, minus } = require('./index')
+
+test('测试 add 加法', () => {
+    expect(add(10, 20)).toBe(30)
+})
+
+test('测试 minus 减法方法', () => {
+    expect(minus(10, 20)).toBe(-10)
+})
+
+// jest 测试时候的完成是两个
+// 单元测试 测试单个的模块
+// 集成测试 多个模块测试
+```
+
++ 运行 **npx jest**
+
+或者在 package.json 中 scripts 添加的运行命令
+
+```json
+ "scripts": {
+    "test": "jest"
+  },
+```
+
+
 

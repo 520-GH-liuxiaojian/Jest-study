@@ -1,20 +1,20 @@
-// let result = add(10, 20)
-// let expected = 30
+let result = add(10, 20)
+let expected = 30
 
-// if(result !== expected) {
-//     throw new Error(`10 + 20 预期结果是${expected}, 但是结果确是${result}`)
-// } else {
-//     console.log(`10 + 20 结果是${result}, 通过测试`)
-// }
+if(result !== expected) {
+    throw new Error(`10 + 20 预期结果是${expected}, 但是结果确是${result}`)
+} else {
+    console.log(`10 + 20 结果是${result}, 通过测试`)
+}
 
-// let result = minus(10, 20)
-// let expected = -10
+let result = minus(10, 20)
+let expected = -10
 
-// if(result !== expected) {
-//     throw new Error(`10 - 20 预期结果是${expected}, 但是结果确是${result}`)
-// } else {
-//     console.log(`10 - 20 结果是${result}, 通过测试`)
-// }
+if(result !== expected) {
+    throw new Error(`10 - 20 预期结果是${expected}, 但是结果确是${result}`)
+} else {
+    console.log(`10 - 20 结果是${result}, 通过测试`)
+}
 
 // 不管通过与否 输出的结果都是一样的 还需要持续优化
 function expect(result) {

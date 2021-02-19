@@ -181,3 +181,65 @@ test('测试 minus 减法方法', () => {
 
 
 
+
+
+## Jest 简单配置
+
+在实际的项目开发工程中 为了方便自定义 都需要对项目的进行自定义配置 jest 也是的支持 项目特殊的自定义配置信息如何暴露
+
+>  **npx jest --init**
+
+
+
+```javascript
+// 自动清除的模拟数据信息
+clearMocks: true,
+  
+// 测试覆盖率报告存放位置
+coverageDirectory: "coverage",
+```
+
+
+
+测试代码的测试覆盖率相关信息
+
+> **npx jest --coverage**
+
+这个时候就会在控制台输出测试相关信息 也会在的目录下的生成一个的 coverage 目录 也可以在浏览器查看到相关的信息
+
+```javascript
+coverageDirectory: "coverage",
+```
+
+通过更改指定的目录就会生成指定的文件目录地址
+
+
+
+如何让 js  支持 esmodule 语法标准 是用 babel 进行转化
+
+如果没有设置的语法的转换 那么在 Jest 就不会识别该语法 该语法点在 Jest 中就是的直接提示报错
+
+安装 **@babel/core @babel/preset-env**
+
+> **npm install @babel/core @babel/preset-env -D**
+
+配置 babel 转换信息
+
+```javascript
+{
+    "presets": [
+        [
+            "@babel/preset-env", {
+                "targets": {
+                    "node": "current"
+                } 
+            }
+        ]
+    ]
+}
+```
+
+**转换之后运行原理**
+
+当运行 jest 的时候 -> jest(babel-jest) 插件就会查找系统中 babel 信息 -> babel-core -> 在运行之前结合 babel 将 esmodule 代码进行转换成为 commonJs 代码 -> 运行转化过后的代码
+

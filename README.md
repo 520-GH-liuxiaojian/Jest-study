@@ -281,6 +281,8 @@ coverageDirectory: "coverage",
 
 + > **toThrow** 是否抛出异常
 
++ > **toMatchObject** 在对象内容中的是否包含某部分具体片段
+
 
 
 https://jestjs.io/docs/en/expect
@@ -294,4 +296,92 @@ https://jestjs.io/docs/en/expect
 + a 任何测试的文件发生改变 其他的文件的 测试用例也会重新测试
 + t 根据测试用例的名称来过滤没有指定的测试用例
 + q 退出测试
+
+
+
+## 异步代码测试
+
+首先编写异步发送 Ajax 发送的异步代码
+
+```javascript
+export const fetchData = fn => {
+    axios.get('http://www.dell-lee.com/react/api/demo.json').then(result => {
+        fn(result.data)
+    })
+}
+```
+
+测试方案:
+
++ **异步代码的测试方式一 done**
+
+```javascript
+test('测试返回值', done => {
+    // test 可以接受一个参数 这个参数的是一个的函数 done
+    // 如果没有调用 done 则代表没有执行完成内部函数
+  	// done 必须要放在异步代码中
+    fetchData(data => {
+        expect(data).toEqual({ success: true })
+        done()
+    })
+})
+```
+
++ **异步代码测试的方式二 异步代码直接返回 promise**
+
+```javascript
+export const fetchData = () => {
+    return axios.get('http://www.dell-lee.com/react/api/demo1.json')
+}
+```
+
+```javascript
+test('测试返回值', () => {
+    // 测试异步代码在这里需要直接返回
+    return fetchData().then(result => {
+        expect(result.data).toEqual({ success: true })
+    })
+})
+```
+
+**测试异步的代码需要在这里进行返回**
+
++ **测试返回的结果为 404**
+
+**通过 expect.assertions(1)** 来查看 expect 调用次数 如果没有达到预期值 就是就会提示测试不会通过
+
+```javascript
+test('测试返回值 404', () => {
+    expect.assertions(1)
+    return fetchData().catch(error => {
+        expect(error.toString().indexOf('404') > -1).toBeTruthy()
+    })
+})
+```
+
++ **使用 async await 进行代码异步测试**
+
+```javascript
+test('测试返回值的 { success: true }', async () => {
+    expect.assertions(1)
+    try {
+        await fetchData()
+    } catch(error) {
+        expect(error.toString()).toBe('Error: Request failed with status code 404')
+    }
+})
+```
+
++ **使用 进行正常的代码的测试**
+
+```javascript
+test('测试返回值的 { success: true }', async () => {
+  	const { data } = await fetchData()
+     expect(data).toMachObject({success: true})
+})
+```
+
+
+
+
 

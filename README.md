@@ -383,5 +383,20 @@ test('测试返回值的 { success: true }', async () => {
 
 
 
+## jest 中的 钩子函数
+
+在 Jest 中的某个的时刻会自动的执行函数为钩子函数 【与 react 声明周期的类似】
+
++ beforeAll  在所有测试的用例运行之前就会执行
++ beforeEach 每个的测试的用例的执行之前都会执行
++ afterEach 每个测试用例执行完成之后就会执行
++ afterAll 在所有的测试用例运行完成之后就会执行
+
+
+
+分组语法
+
+describe 分组语法可以被层层嵌套
+
 
 
